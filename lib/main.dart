@@ -2,6 +2,7 @@ import 'package:bookamera/view/result.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import 'function/recognition.dart';
 import 'model/empty_app_bar.dart';
 import 'model/full_screen_camera_preview.dart';
 
@@ -53,7 +54,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       // Get a specific camera from the list of available cameras.
       widget.camera,
       // Define the resolution to use.
-      ResolutionPreset.medium,
+      ResolutionPreset.max,
     );
 
     // Next, initialize the controller. This returns a Future.
@@ -103,6 +104,9 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             // where it was saved.
             final image = await _controller.takePicture();
 
+            var recognizedText =
+                await TextRecognition().getRecognizedText(image);
+
             if (!mounted) return;
 
             // If the picture was taken, display it on a new screen.
@@ -111,7 +115,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                 builder: (context) => ResultScreen(
                   // Pass the automatically generated path to
                   // the DisplayPictureScreen widget.
-                  imagePath: image.path,
+                  text: recognizedText,
                 ),
               ),
             );
