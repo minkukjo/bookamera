@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ResultScreen extends StatelessWidget {
+class ResultView extends StatelessWidget {
   final String text;
 
-  const ResultScreen({super.key, required this.text});
+  const ResultView({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
