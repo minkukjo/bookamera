@@ -1,7 +1,9 @@
 import 'package:bookamera/function/image_editor.dart';
+import 'package:bookamera/view/result.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import 'function/recognition.dart';
 import 'model/empty_app_bar.dart';
 import 'model/full_screen_camera_preview.dart';
 
@@ -101,26 +103,27 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
             // Attempt to take a picture and get the file `image`
             // where it was saved.
-            final image = await _controller.takePicture();
+            final originImage = await _controller.takePicture();
 
-            await ImageEditor().cropImage(imageFile: image);
+            final croppedImage =
+                await ImageEditor().cropImage(imageFile: originImage);
+            if (croppedImage == null) return;
 
-            //
-            // var recognizedText =
-            //     await TextRecognition().getRecognizedText(image);
-            //
-            // if (!mounted) return;
-            //
-            // // If the picture was taken, display it on a new screen.
-            // await Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (context) => ResultView(
-            //       // Pass the automatically generated path to
-            //       // the DisplayPictureScreen widget.
-            //       text: recognizedText,
-            //     ),
-            //   ),
-            // );
+            var recognizedText =
+                await TextRecognition().getRecognizedText(croppedImage);
+
+            if (!mounted) return;
+
+            // If the picture was taken, display it on a new screen.
+            await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ResultView(
+                  // Pass the automatically generated path to
+                  // the DisplayPictureScreen widget.
+                  text: recognizedText,
+                ),
+              ),
+            );
           } catch (e) {
             // If an error occurs, log the error to the console.
             print(e);
