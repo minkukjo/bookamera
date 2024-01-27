@@ -11,14 +11,6 @@ class PhraseListView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("List"),
-        // leading: IconButton(
-        //   icon: const Icon(Icons.arrow_back),
-        //   onPressed: () {
-        //     Navigator.of(context).push(
-        //       MaterialPageRoute(builder: (context) => PhraseListView()),
-        //     );
-        //   },
-        // ),
       ),
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
