@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RecognitionResultView extends StatelessWidget {
   final String text;
@@ -17,7 +18,9 @@ class RecognitionResultView extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            toastMessage();
+          },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.black),
           ),
@@ -29,4 +32,17 @@ class RecognitionResultView extends StatelessWidget {
       ),
     );
   }
+}
+
+void toastMessage() {
+  // TODO 시간을 더 짧게 할 수 없을지?
+  Fluttertoast.showToast(
+    msg: 'Succeed to save!',
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.TOP,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.black,
+    textColor: Colors.white,
+    fontSize: 20.0,
+  );
 }
