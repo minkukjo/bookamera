@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RecognitionResultView extends StatelessWidget {
   final String text;
@@ -18,8 +19,18 @@ class RecognitionResultView extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20),
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             toastMessage();
+            final SharedPreferences prefs =
+                await SharedPreferences.getInstance();
+            final List<String>? phrases = prefs.getStringList("phrases");
+            if (phrases == null) {
+              var phrases = <String>[text];
+              prefs.setStringList("phrases", phrases);
+            } else {
+              phrases.add(text);
+              prefs.setStringList("phrases", phrases);
+            }
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.black),

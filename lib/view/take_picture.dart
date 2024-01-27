@@ -61,6 +61,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
               alignment: Alignment(
                   Alignment.bottomRight.x, Alignment.bottomRight.y - 0.2),
               child: FloatingActionButton(
+                  heroTag: "list",
                   onPressed: () async {
                     await Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => PhraseListView()),
@@ -72,6 +73,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             Align(
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
+                heroTag: 'camera',
                 onPressed: () async {
                   try {
                     // 카메라 초기화 대기
