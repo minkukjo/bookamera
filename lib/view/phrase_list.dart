@@ -9,7 +9,7 @@ class PhraseListView extends StatefulWidget {
 }
 
 class PhraseState extends State<PhraseListView> {
-  late List<String> _phrases;
+  late List<String> _phrases = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +33,16 @@ class PhraseState extends State<PhraseListView> {
   @override
   void initState() {
     super.initState();
-    _loadPhrases();
+    () async {
+      var phrases = await _loadPhrases();
+      setState(() {
+        _phrases = phrases;
+      });
+    }();
   }
 
   _loadPhrases() async {
     var prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _phrases = (prefs.getStringList("phrases") ?? []);
-    });
+    return (prefs.getStringList("phrases") ?? []);
   }
 }

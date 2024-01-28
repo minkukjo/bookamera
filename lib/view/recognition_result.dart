@@ -20,7 +20,7 @@ class RecognitionResultView extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: ElevatedButton(
           onPressed: () async {
-            toastMessage();
+            await openDialog(context);
             final SharedPreferences prefs =
                 await SharedPreferences.getInstance();
             final List<String>? phrases = prefs.getStringList("phrases");
@@ -43,6 +43,25 @@ class RecognitionResultView extends StatelessWidget {
       ),
     );
   }
+
+  Future openDialog(context) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Put title"),
+          content: const TextField(
+            decoration: InputDecoration(
+                hintText: "Enter name that would be title in list"),
+          ),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  toastMessage();
+                },
+                child: const Text("Submit"))
+          ],
+        ),
+      );
 }
 
 void toastMessage() {
