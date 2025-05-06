@@ -1,0 +1,16 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" rx="220" fill="#1A237E"/>
+  <!-- 3겹 쌓인 책 (중앙) -->
+  <rect x="100" y="600" width="824" height="120" rx="28" fill="white" opacity="0.7"/>
+  <rect x="140" y="520" width="744" height="120" rx="28" fill="white" opacity="0.85"/>
+  <rect x="180" y="440" width="664" height="120" rx="28" fill="white"/>
+  <!-- 카메라 바디 (중앙) -->
+  <rect x="304" y="300" width="416" height="180" rx="44" fill="white" stroke="#1A237E" stroke-width="20"/>
+  <!-- 카메라 렌즈(테두리+안쪽) -->
+  <circle cx="512" cy="390" r="68" fill="#1A237E" stroke="#1A237E" stroke-width="10"/>
+  <circle cx="512" cy="390" r="40" fill="white" stroke="#1A237E" stroke-width="10"/>
+  <!-- 셔터 버튼(상단) -->
+  <rect x="610" y="280" width="44" height="24" rx="8" fill="#1A237E"/>
+  <!-- 뷰파인더(왼쪽 상단) -->
+  <rect x="336" y="320" width="32" height="20" rx="6" fill="#1A237E"/>
+</svg>
