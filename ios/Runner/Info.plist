@@ -46,8 +46,16 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-  <string>Explanation on why the camera access is needed.</string>
-  <key>NSMicrophoneUsageDescription</key>
-  <string>Explanation on why the microphone access is needed.</string>
+	<string>Explanation on why the camera access is needed.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Explanation on why the microphone access is needed.</string>
+	<key>UIShutterSoundEnabled</key>
+	<false/>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIRequiresPersistentWiFi</key>
+	<false/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>
